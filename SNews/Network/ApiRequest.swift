@@ -25,24 +25,25 @@ extension ApiRequest: NetworkRequest {
     return load(resource.requestUrl, method: .post, parameters: data)
   }
   
-  func get() -> Observable<NetworkResponse<Resource.Model>> {
-    return load(resource.requestUrl, method: .get)
+  func get(page: Int = 0) -> Observable<NetworkResponse<Resource.Model>> {
+    return load(resource.requestUrl, method: .get, page: page)
   }
   
   private func load (_ requestUrl: String,
                      method: HTTPMethod,
-                     parameters: [String: Any]? = nil ) -> Observable<NetworkResponse<Model>> {
+                     parameters: [String: Any]? = nil,
+                     page: Int = 0) -> Observable<NetworkResponse<Model>> {
     UIApplication.shared.isNetworkActivityIndicatorVisible = true
     
     return Observable.create { observer in
-      requestData(method, requestUrl + "&apiKey=\(UserDefaults.User.APIKey)",
+      requestData(method, requestUrl + "&page=\(page)&apiKey=\(UserDefaults.User.APIKey)",
                   parameters: parameters,
                   encoding: JSONEncoding.default).debug()
         .subscribe(onNext: { resonse in
 //          let statusCode = resonse.0.statusCode
           let responseData = resonse.1
           let serverResponse = self.decode(responseData)
-          #if DEBUG
+          #if !DEBUG
             self.deBugPrintJson(responseData)
           #endif
           UIApplication.shared.isNetworkActivityIndicatorVisible = false

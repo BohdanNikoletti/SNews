@@ -19,8 +19,6 @@ struct  Endpoints {
 
 extension UserDefaults {
   enum User {
-    static let defaultLocation = "us"
-    static let defaultCategory = "business"
     static let APIKey = "d69d7c224c7a476982cd86030b053072"
   }
 }

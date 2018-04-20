@@ -44,6 +44,7 @@ final class NewsTableViewCell: IsLoadableTableViewCell {
   
   override func prepareForReuse() {
     super.prepareForReuse()
+    posterImage.kf.cancelDownloadTask()
     posterImage.image = #imageLiteral(resourceName: "empty-image")
   }
   

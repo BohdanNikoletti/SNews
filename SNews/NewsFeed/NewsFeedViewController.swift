@@ -16,7 +16,7 @@ final class NewsFeedViewController: UIViewController {
   @IBOutlet weak private var tableView: UITableView!
   
   // MARK: - Properties
-  private let viewModel = NewsFeedViewModel()
+  private var viewModel = NewsFeedViewModel()
   private let disposeBag = DisposeBag()
   private var selectedArticle: Article?
   
@@ -24,7 +24,6 @@ final class NewsFeedViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     prepareTableView()
-    viewModel.getNews()
   }
 
   override func didReceiveMemoryWarning() {
@@ -58,6 +57,15 @@ final class NewsFeedViewController: UIViewController {
       .setDelegate(self)
       .disposed(by: disposeBag)
     
+    tableView.rx
+      .contentOffset
+      .asDriver()
+      .drive(onNext: { [unowned self] point in
+        if point.y >= (self.tableView.contentSize.height - self.tableView.frame.size.height) {
+          self.viewModel.getNews()
+        }
+      }).disposed(by: disposeBag)
+    
   }
   
   // MARK: - Navigation
@@ -75,7 +83,9 @@ extension NewsFeedViewController: UITableViewDelegate {
   func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
     return .none
   }
-  
+//  func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+//    cell
+//  }
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
     return 80
   }

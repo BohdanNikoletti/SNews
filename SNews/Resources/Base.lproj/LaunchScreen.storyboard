@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -25,9 +24,18 @@
                                     <constraint firstAttribute="width" secondItem="FZt-xP-1gr" secondAttribute="height" multiplier="1:1" id="V51-xN-juu"/>
                                 </constraints>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="News You are going to love" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NTP-AN-Pcf">
+                                <rect key="frame" x="32" y="427" width="311" height="62.5"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="26"/>
+                                <color key="textColor" red="0.94509803920000002" green="0.2784313725" blue="0.25882352939999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.92549019610000005" green="0.90588235289999997" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.92156862745098034" green="0.90588235294117647" blue="0.92156862745098034" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="NTP-AN-Pcf" secondAttribute="trailing" constant="32" id="H6J-29-JnN"/>
+                            <constraint firstItem="NTP-AN-Pcf" firstAttribute="top" secondItem="FZt-xP-1gr" secondAttribute="bottom" constant="32" id="Q40-Ys-0PJ"/>
+                            <constraint firstItem="NTP-AN-Pcf" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="32" id="WEP-cA-zdD"/>
                             <constraint firstItem="FZt-xP-1gr" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="64" id="ags-1C-voq"/>
                             <constraint firstItem="FZt-xP-1gr" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="128" id="u9M-wH-QmH"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="FZt-xP-1gr" secondAttribute="trailing" constant="64" id="yXT-yK-WCF"/>

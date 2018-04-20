@@ -13,16 +13,9 @@ struct TopHeadLinesResource: ApiResource {
   struct DataVrapper: Decodable {
     let articles: [Article]
   }
-//  
-//  var params: String? {
-//    didSet {
-//      guard let params = params, !params.isEmpty else { return }
-//      methodPath.append(params)
-//    }
-//  }
-//  
+  
   var methodPath = "top-headlines?"
-
+  
   func makeModel(data: Data) -> [Article]? {
     do {
       return try decoder.decode(DataVrapper.self, from: data).articles

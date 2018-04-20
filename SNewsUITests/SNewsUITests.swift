@@ -28,7 +28,7 @@ final class SNewsUITests: XCTestCase {
     let exists = NSPredicate(format: "exists == 1")
     
     expectation(for: exists, evaluatedWith: newsTable, handler: nil)
-    waitForExpectations(timeout: 3, handler: nil)
+    waitForExpectations(timeout: 5, handler: nil)
     
     XCTAssertTrue(newsTable.exists)
     newsTable.cells.element(boundBy:0).tap()

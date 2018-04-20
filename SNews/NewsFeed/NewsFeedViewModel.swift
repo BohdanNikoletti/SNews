@@ -12,7 +12,6 @@ struct NewsFeedViewModel {
   // MARK: - Properties
   var topHeadLinesResource = TopHeadLinesResource()
   let networkService: NewsService?
-  
   let dataSource = RxTableViewSectionedReloadDataSource<NewsSection>(
       configureCell: { (_, tableView, _, element) in
         guard let cell = tableView
@@ -31,12 +30,15 @@ struct NewsFeedViewModel {
   
   // MARK: - Initializers
   init() {
-    topHeadLinesResource.methodPath.append("country=us&category=business")
+    topHeadLinesResource.methodPath.append("category=business")
     networkService = NewsService(resource: topHeadLinesResource)
   }
   
   // MARK: - Methods
   func getNews() {
-    networkService?.getNews()
+    guard let service = self.networkService else { return }
+    if service.isLoading.value { return }
+    service.getNews()
   }
+
 }
