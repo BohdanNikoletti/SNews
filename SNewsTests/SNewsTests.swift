@@ -7,30 +7,54 @@
 //
 
 import XCTest
+import Quick
+import Nimble
+import RxSwift
+import RxTest
+import RxCocoa
+import RxBlocking
+import Alamofire
+import RxAlamofire
+
 @testable import SNews
 
-class SNewsTests: XCTestCase {
-    
-    override func setUp() {
-        super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-    
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-        super.tearDown()
-    }
-    
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-    
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+final class AuthorizationSpec: QuickSpec {
+  override func spec() {
+    describe("News Feed") {
+      var networkService: NetworkService<TopHeadLinesResource>!
+
+      describe("Default settings") {
+        it("with correct data") {
+          var topHeadLinesResource = TopHeadLinesResource()
+          topHeadLinesResource.methodPath.append("country=us&category=business")
+          networkService = NewsService(resource: topHeadLinesResource)
+          do {
+            let networkResponse = try networkService.request?.get()
+              .toBlocking()
+              .first()
+            expect(networkResponse).toNot(beNil())
+            expect(networkResponse?.data).toNot(beNil())
+            expect(networkResponse?.data?.count == 20).to(beTrue())
+          } catch {
+            fail(error.localizedDescription)
+          }
+          
         }
+        it("with wrong data") {
+          var topHeadLinesResource = TopHeadLinesResource()
+          topHeadLinesResource.methodPath.append("countries=ff")
+          networkService = NewsService(resource: topHeadLinesResource)
+          do {
+            let networkResponse = try networkService.request?.get()
+              .toBlocking()
+              .first()
+            expect(networkResponse).toNot(beNil())
+            expect(networkResponse?.data).to(beNil())
+          } catch {
+            fail(error.localizedDescription)
+          }
+        }
+      }
     }
-    
+  }
 }

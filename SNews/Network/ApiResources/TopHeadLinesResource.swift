@@ -13,8 +13,15 @@ struct TopHeadLinesResource: ApiResource {
   struct DataVrapper: Decodable {
     let articles: [Article]
   }
-  
-  var methodPath = "top-headlines?country=us&category=business&apiKey=d69d7c224c7a476982cd86030b053072"
+//  
+//  var params: String? {
+//    didSet {
+//      guard let params = params, !params.isEmpty else { return }
+//      methodPath.append(params)
+//    }
+//  }
+//  
+  var methodPath = "top-headlines?"
 
   func makeModel(data: Data) -> [Article]? {
     do {

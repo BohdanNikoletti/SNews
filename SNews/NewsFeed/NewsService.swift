@@ -21,7 +21,7 @@ final class NewsService: NetworkService<TopHeadLinesResource> {
     request?.get()
       .subscribe(onNext: {[weak self] serverResponse in
         if let data = serverResponse.data {
-          print(data)
+          self?.content.accept([NewsSection(header: "", items: data)])
           self?.isSuccess.accept(true)
           self?.isLoading.accept(false)
         } else {

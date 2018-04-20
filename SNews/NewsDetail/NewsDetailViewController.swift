@@ -15,15 +15,12 @@ final class NewsDetailViewController: UIViewController {
   @IBOutlet weak var webView: WKWebView!
   
   // MARK: - Properties
-  var newsLink = "https://www.nytimes.com/2018/04/20/business/barclays-james-staley.html"
+  var newsLink: URL?
+  
   // MARK: - Lifecycle events
   override func viewDidLoad() {
     super.viewDidLoad()
-    guard let url = URL(string: newsLink) else {
-      return
-    }
-    webView.load(URLRequest(url: url))
-    webView.allowsBackForwardNavigationGestures = true
+    loadArticle()
   }
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
@@ -37,5 +34,12 @@ final class NewsDetailViewController: UIViewController {
   override func didReceiveMemoryWarning() {
     super.didReceiveMemoryWarning()
     // Dispose of any resources that can be recreated.
+  }
+  
+  // MARK: - Private methods
+  private func loadArticle() {
+    guard let newsLink = self.newsLink else { return }
+    webView.load(URLRequest(url: newsLink))
+    webView.allowsBackForwardNavigationGestures = true
   }
 }

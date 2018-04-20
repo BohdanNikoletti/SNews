@@ -15,11 +15,12 @@ final class NewsFeedViewController: UIViewController {
   // MARK: - Outlets
   @IBOutlet weak private var tableView: UITableView!
   
-  // MARK: Properties
+  // MARK: - Properties
   private let viewModel = NewsFeedViewModel()
   private let disposeBag = DisposeBag()
+  private var selectedArticle: Article?
   
-  // MARK: Life cycle events
+  // MARK: - Life cycle events
   override func viewDidLoad() {
     super.viewDidLoad()
     prepareTableView()
@@ -47,8 +48,9 @@ final class NewsFeedViewController: UIViewController {
       .map { indexPath in
         return (indexPath, dataSource[indexPath])
       }
-      .subscribe(onNext: { pair in
-        print("Tapped `\(pair.1)` @ \(pair.0)")
+      .subscribe(onNext: { [weak self] pair in
+        self?.selectedArticle = pair.1
+        self?.performSegue(withIdentifier: "newsDetail", sender: self)
       })
       .disposed(by: disposeBag)
     
@@ -56,6 +58,14 @@ final class NewsFeedViewController: UIViewController {
       .setDelegate(self)
       .disposed(by: disposeBag)
     
+  }
+  
+  // MARK: - Navigation
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    super.prepare(for: segue, sender: self)
+    guard let newsDetail = segue.destination as? NewsDetailViewController else { return }
+    newsDetail.newsLink = selectedArticle?.newsLink
+    newsDetail.title = selectedArticle?.author
   }
 }
 

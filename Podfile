@@ -1,5 +1,5 @@
 # Uncomment the next line to define a global platform for your project
-platform :ios, '10.0'
+platform :ios, '11.0'
 def unit_testing_pods
   pod 'RxBlocking'
   pod 'RxAlamofire'
@@ -15,8 +15,8 @@ def general_pods
   pod 'RxDataSources'
   pod 'NotificationBannerSwift'
   pod 'ReachabilitySwift'
-  pod 'RealmSwift'
   pod 'SwiftLint'
+  pod 'Kingfisher'
   pod 'FTLinearActivityIndicator'
   pod 'SkeletonView'
 end

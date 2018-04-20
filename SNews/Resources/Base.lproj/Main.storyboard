@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -79,10 +78,12 @@
                                             <outlet property="posterImage" destination="Mfx-60-nFt" id="ixe-h1-qr2"/>
                                             <outlet property="subTitleLabel" destination="fYo-0r-nPe" id="UJV-US-AwA"/>
                                             <outlet property="titleLabel" destination="3Q2-eB-JAv" id="gQ7-6e-odm"/>
-                                            <segue destination="PK4-jC-XeK" kind="show" id="cR9-TL-ZJp"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="accessibilityIdentifier" value="newsTable"/>
+                                </userDefinedRuntimeAttributes>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -97,6 +98,7 @@
                     <navigationItem key="navigationItem" title="SNews" id="r9U-Xt-kfp"/>
                     <connections>
                         <outlet property="tableView" destination="0wY-to-8DQ" id="z2T-Hl-Ia7"/>
+                        <segue destination="PK4-jC-XeK" kind="show" identifier="newsDetail" id="BZk-Qc-oTe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="V4P-Cl-Fss" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -128,6 +130,9 @@
                             <constraint firstItem="TQ8-CF-mie" firstAttribute="trailing" secondItem="9Qg-hK-MOD" secondAttribute="trailing" id="wTT-bj-Htd"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="9Qg-hK-MOD"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="string" keyPath="accessibilityIdentifier" value="newsDetail"/>
+                        </userDefinedRuntimeAttributes>
                     </view>
                     <connections>
                         <outlet property="webView" destination="TQ8-CF-mie" id="cRe-Zv-TOK"/>

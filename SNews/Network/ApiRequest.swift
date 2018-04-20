@@ -33,8 +33,9 @@ extension ApiRequest: NetworkRequest {
                      method: HTTPMethod,
                      parameters: [String: Any]? = nil ) -> Observable<NetworkResponse<Model>> {
     UIApplication.shared.isNetworkActivityIndicatorVisible = true
+    
     return Observable.create { observer in
-      requestData(method, requestUrl,
+      requestData(method, requestUrl + "&apiKey=\(UserDefaults.User.APIKey)",
                   parameters: parameters,
                   encoding: JSONEncoding.default).debug()
         .subscribe(onNext: { resonse in

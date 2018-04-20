@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 final class NewsTableViewCell: IsLoadableTableViewCell {
   
@@ -32,6 +33,18 @@ final class NewsTableViewCell: IsLoadableTableViewCell {
     didSet {
       posterImage.image = poster ?? #imageLiteral(resourceName: "empty-image")
     }
+  }
+  
+  var posterURL: URL? {
+    didSet {
+      guard let posterAddress = posterURL else { return }
+      posterImage.kf.setImage(with: posterAddress, placeholder: #imageLiteral(resourceName: "empty-image"))
+    }
+  }
+  
+  override func prepareForReuse() {
+    super.prepareForReuse()
+    posterImage.image = #imageLiteral(resourceName: "empty-image")
   }
   
   // MARK: - Lifecycle events

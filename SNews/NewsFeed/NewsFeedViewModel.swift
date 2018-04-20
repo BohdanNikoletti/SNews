@@ -7,7 +7,6 @@
 //
 
 import RxDataSources
-
 struct NewsFeedViewModel {
   
   // MARK: - Properties
@@ -26,17 +25,13 @@ struct NewsFeedViewModel {
         if element.isTemplateModel { return cell }
         cell.title = element.title
         cell.subTitle = element.description
-  
-  //      if let imageURLString = element.imageURLString,
-  //        let imageUrl = URL(string: imageURLString),
-  //        let data = try? Data(contentsOf: imageUrl) {
-  //        cell.icon = UIImage(data: data)
-  //      }
+        cell.posterURL = element.imageLink
         return cell
     })
   
   // MARK: - Initializers
   init() {
+    topHeadLinesResource.methodPath.append("country=us&category=business")
     networkService = NewsService(resource: topHeadLinesResource)
   }
   
