@@ -113,7 +113,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="551"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TQ8-CF-mie">
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="zxv-e9-zVD">
+                                <rect key="frame" x="169" y="257" width="37" height="37"/>
+                                <color key="color" red="0.27685046200000002" green="0.35365754370000002" blue="0.39428466559999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </activityIndicatorView>
+                            <wkWebView opaque="NO" alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TQ8-CF-mie">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="551"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <wkWebViewConfiguration key="configuration">
@@ -125,9 +129,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="TQ8-CF-mie" firstAttribute="leading" secondItem="9Qg-hK-MOD" secondAttribute="leading" id="VKp-xc-0x0"/>
+                            <constraint firstItem="zxv-e9-zVD" firstAttribute="centerX" secondItem="9Qg-hK-MOD" secondAttribute="centerX" id="Vxt-oT-NWh"/>
                             <constraint firstItem="TQ8-CF-mie" firstAttribute="bottom" secondItem="9Qg-hK-MOD" secondAttribute="bottom" id="gGd-Ni-qnY"/>
                             <constraint firstItem="TQ8-CF-mie" firstAttribute="top" secondItem="9Qg-hK-MOD" secondAttribute="top" id="u8m-aL-gLl"/>
                             <constraint firstItem="TQ8-CF-mie" firstAttribute="trailing" secondItem="9Qg-hK-MOD" secondAttribute="trailing" id="wTT-bj-Htd"/>
+                            <constraint firstItem="zxv-e9-zVD" firstAttribute="centerY" secondItem="9Qg-hK-MOD" secondAttribute="centerY" id="yxY-wb-SRR"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="9Qg-hK-MOD"/>
                         <userDefinedRuntimeAttributes>
@@ -135,6 +141,7 @@
                         </userDefinedRuntimeAttributes>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="zxv-e9-zVD" id="5hr-Ih-kPH"/>
                         <outlet property="webView" destination="TQ8-CF-mie" id="cRe-Zv-TOK"/>
                     </connections>
                 </viewController>

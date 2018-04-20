@@ -77,15 +77,13 @@ final class NewsFeedViewController: UIViewController {
   }
 }
 
-// MARK: UITableViewDelegate extension
+// MARK: - UITableViewDelegate extension
 extension NewsFeedViewController: UITableViewDelegate {
   
   func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
     return .none
   }
-//  func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-//    cell
-//  }
+
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
     return 80
   }

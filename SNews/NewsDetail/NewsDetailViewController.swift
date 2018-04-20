@@ -8,11 +8,14 @@
 
 import UIKit
 import WebKit
+import RxCocoa
+import RxSwift
 
 final class NewsDetailViewController: UIViewController {
   
   // MARK: - Outlets
   @IBOutlet weak var webView: WKWebView!
+  @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
   
   // MARK: - Properties
   var newsLink: URL?
@@ -20,6 +23,7 @@ final class NewsDetailViewController: UIViewController {
   // MARK: - Lifecycle events
   override func viewDidLoad() {
     super.viewDidLoad()
+    webView.navigationDelegate = self
     loadArticle()
   }
   override func viewWillAppear(_ animated: Bool) {
@@ -41,5 +45,14 @@ final class NewsDetailViewController: UIViewController {
     guard let newsLink = self.newsLink else { return }
     webView.load(URLRequest(url: newsLink))
     webView.allowsBackForwardNavigationGestures = true
+  }
+}
+extension NewsDetailViewController: WKNavigationDelegate {
+  func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+    UIView.animate(withDuration: 0.35,
+                   animations: { [unowned self] in
+                    self.webView.alpha = 1
+    })
+    activityIndicator.stopAnimating()
   }
 }

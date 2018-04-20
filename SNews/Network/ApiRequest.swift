@@ -40,7 +40,6 @@ extension ApiRequest: NetworkRequest {
                   parameters: parameters,
                   encoding: JSONEncoding.default).debug()
         .subscribe(onNext: { resonse in
-//          let statusCode = resonse.0.statusCode
           let responseData = resonse.1
           let serverResponse = self.decode(responseData)
           #if !DEBUG
