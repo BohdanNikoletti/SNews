@@ -12,15 +12,20 @@ import RxSwift
 import Alamofire
 
 final class NewsService: NetworkService<TopHeadLinesResource> {
+  // MARK: - Properties
+  private let pageSize = 20
+  private var page: Int {
+    return articles.count / pageSize + 1
+  }
   
   let content = BehaviorRelay<[NewsSection]>(value: [NewsSection(header: "",
                                                                  items: [Article]
                                                                   .init(repeating: Article.template, count: 10))])
-  var articles: [Article] = []
+  private var articles: [Article] = []
   
+  // MARK: - Methods
   func getNews() {
     isLoading.accept(true)
-    let page = articles.count / 20 + 1 // - 20 is standart page size, +1 gives start not from 0 page
     request?.get(page: page)
       .subscribe(onNext: {[unowned self] serverResponse in
         if let data = serverResponse.data {

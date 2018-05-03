@@ -12,9 +12,11 @@ struct NewsSection: SectionModelType {
   
   typealias Item = Article
   
+  // MARK: - Properties
   var header: String
   var items: [Item]
   
+  // MARK: - Initializers
   init(original: NewsSection, items: [Item]) {
     self = original
     self.items = items

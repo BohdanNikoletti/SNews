@@ -26,18 +26,20 @@ final class NewsDetailViewController: UIViewController {
     webView.navigationDelegate = self
     loadArticle()
   }
+  
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     self.navigationController?.navigationBar.prefersLargeTitles = false
   }
+  
   override func viewWillDisappear(_ animated: Bool) {
     super.viewWillDisappear(animated)
     self.navigationController?.navigationBar.prefersLargeTitles = true
 
   }
+  
   override func didReceiveMemoryWarning() {
     super.didReceiveMemoryWarning()
-    // Dispose of any resources that can be recreated.
   }
   
   // MARK: - Private methods
@@ -47,6 +49,8 @@ final class NewsDetailViewController: UIViewController {
     webView.allowsBackForwardNavigationGestures = true
   }
 }
+
+// MARK: - WKNavigationDelegate
 extension NewsDetailViewController: WKNavigationDelegate {
   func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
     UIView.animate(withDuration: 0.35,

@@ -10,13 +10,14 @@ import UIKit
 import FTLinearActivityIndicator
 import Reachability
 import NotificationBannerSwift
+
 #if DEBUG
   import RxSwift
 #endif
 
 @UIApplicationMain
 final class AppDelegate: UIResponder, UIApplicationDelegate {
-  
+  // MARK: - Properties
   var window: UIWindow?
   private var isFirstLaunch = true
   private let reachability = Reachability()
@@ -33,6 +34,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
     return banner
   }()
   
+  // MARK: - App lifecycle
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
     UIApplication.configureLinearNetworkActivityIndicatorIfNeeded()
     settingUpDebugLogForRX()
@@ -43,9 +45,11 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
   deinit { reachability?.stopNotifier() }
   
 }
+
+// MARK: - Private extension
 private extension AppDelegate {
   
-  func settingUpDebugLogForRX() {
+  private func settingUpDebugLogForRX() {
     #if DEBUG
     _ = Observable<Int>
       .interval(1, scheduler: MainScheduler.instance)
@@ -55,7 +59,7 @@ private extension AppDelegate {
     #endif
   }
   
-  func reachabilityhandler() {
+  private func reachabilityhandler() {
     reachability?.whenReachable = {
       [unowned self] _ in
       if !self.isFirstLaunch {

@@ -22,6 +22,20 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="0wY-to-8DQ">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="551"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <view key="tableFooterView" contentMode="scaleToFill" id="CEp-w9-e8G">
+                                    <rect key="frame" x="0.0" y="109" width="375" height="32"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="1Oj-eZ-otu">
+                                            <rect key="frame" x="177" y="8" width="20" height="20"/>
+                                        </activityIndicatorView>
+                                    </subviews>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstItem="1Oj-eZ-otu" firstAttribute="centerX" secondItem="CEp-w9-e8G" secondAttribute="centerX" id="9Xk-eg-xDq"/>
+                                        <constraint firstItem="1Oj-eZ-otu" firstAttribute="top" secondItem="CEp-w9-e8G" secondAttribute="top" constant="8" id="QyY-1x-8pW"/>
+                                    </constraints>
+                                </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="NewsCell" rowHeight="81" id="rmm-KG-5pU" customClass="NewsTableViewCell" customModule="SNews" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="81"/>
@@ -103,7 +117,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="V4P-Cl-Fss" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="852" y="134"/>
+            <point key="canvasLocation" x="852" y="133.5832083958021"/>
         </scene>
         <!--News Detail View Controller-->
         <scene sceneID="ArL-BL-xhr">

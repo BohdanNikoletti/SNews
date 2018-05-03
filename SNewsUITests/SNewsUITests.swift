@@ -22,7 +22,7 @@ final class SNewsUITests: XCTestCase {
     super.tearDown()
   }
   
-  func testExample() {
+  func checkNewsClick() {
     app.launch()
     let newsTable = app.tables["newsTable"]
     let exists = NSPredicate(format: "exists == 1")
