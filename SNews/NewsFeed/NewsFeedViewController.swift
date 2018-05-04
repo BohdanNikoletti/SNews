@@ -9,6 +9,7 @@
 import UIKit
 import RxCocoa
 import RxSwift
+import NotificationBannerSwift
 
 final class NewsFeedViewController: UIViewController {
   
@@ -19,11 +20,18 @@ final class NewsFeedViewController: UIViewController {
   private var viewModel = NewsFeedViewModel()
   private let disposeBag = DisposeBag()
   private var selectedArticle: Article?
-  
+
   // MARK: - Life cycle events
   override func viewDidLoad() {
     super.viewDidLoad()
     prepareTableView()
+    viewModel.networkService?
+      .errorMessage.asObservable()
+      .filter { $0 != nil }.bind { errors in
+        let errorBanner = NotificationBanner(title: errors?.title ?? "Error",
+                                             subtitle: errors?.localizedDescription, style: .danger)
+        errorBanner.show( bannerPosition: BannerPosition.bottom)
+      }.disposed(by: disposeBag)
   }
 
   override func didReceiveMemoryWarning() {
@@ -61,6 +69,7 @@ final class NewsFeedViewController: UIViewController {
       .contentOffset
       .asDriver()
       .drive(onNext: { [unowned self] point in
+        // when vertical content offset reach bottom
         if point.y >= (self.tableView.contentSize.height - self.tableView.frame.size.height) {
           self.viewModel.getNews()
         }

@@ -15,7 +15,7 @@ class NetworkService<Resource: ApiResource> {
   let request: ApiRequest<Resource>?
   let isLoading = BehaviorRelay(value: false)
   let isSuccess = BehaviorRelay(value: false)
-  let errorMessage = BehaviorRelay<Error?>(value: nil)
+  let errorMessage = BehaviorRelay<AppError?>(value: nil)
   let disposeBag = DisposeBag()
   
   // MARK: - Initializer
@@ -26,6 +26,6 @@ class NetworkService<Resource: ApiResource> {
   // MARK: - Methods
   func errohandler( _ error: Error) {
     isLoading.accept(false)
-    errorMessage.accept(error)
+    errorMessage.accept(AppError.init(form: error))
   }
 }

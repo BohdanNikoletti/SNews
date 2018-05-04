@@ -16,6 +16,8 @@ protocol ApiResource {
   var requestUrl: String { get }
   
   func makeModel(data: Data) -> Model
+  func decodeError(data: Data) -> AppError?
+
 }
 
 extension ApiResource {
@@ -29,4 +31,9 @@ extension ApiResource {
   var decoder: JSONDecoder {
     return JSONDecoder()
   }
+  
+  func decodeError(data: Data) -> AppError? {
+    return AppError.parse(data)
+  }
+
 }

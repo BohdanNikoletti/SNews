@@ -25,6 +25,7 @@ struct AppError: LocalizedError {
   init(form systemError: Error) {
     self.init(description: systemError.localizedDescription)
   }
+  
 }
 // MARK: - AppError Decodable extension
 extension AppError: Decodable {
@@ -39,4 +40,14 @@ extension AppError: Decodable {
     self.title = try container.decode(String.self, forKey: .title)
     self._description = try container.decode(String.self, forKey: ._description)
   }
+  
+  static func parse( _ data: Data) -> AppError? {
+    do {
+      return try JSONDecoder().decode(AppError.self, from: data)
+    } catch {
+      print(error.localizedDescription)
+      return nil
+    }
+  }
+
 }

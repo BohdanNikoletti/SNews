@@ -10,5 +10,5 @@ import Foundation
 
 struct NetworkResponse<Model> {
   let data: Model
-  let erros: [Error]?
+  let erros: AppError?
 }

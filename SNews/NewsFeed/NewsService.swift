@@ -35,7 +35,7 @@ final class NewsService: NetworkService<TopHeadLinesResource> {
           self.isLoading.accept(false)
         } else {
           self.isLoading.accept(false)
-          self.errorMessage.accept(nil)
+          self.errorMessage.accept(serverResponse.erros)
         }
         }, onError: self.errohandler(_:))
       .disposed(by: disposeBag)
