@@ -16,7 +16,7 @@ final class NewsTableViewCell: IsLoadableTableViewCell {
   @IBOutlet weak private var titleLabel: UILabel!
   @IBOutlet weak private var subTitleLabel: UILabel!
   
-  // MARK: - Propertie listeners
+  // MARK: - Propertie listener
   var title: String? {
     didSet {
       titleLabel.text = title

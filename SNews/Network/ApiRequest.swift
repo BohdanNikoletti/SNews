@@ -42,7 +42,7 @@ extension ApiRequest: NetworkRequest {
         .subscribe(onNext: { resonse in
           let responseData = resonse.1
           let serverResponse = self.decode(responseData)
-          #if !DEBUG
+          #if DEBUG
             self.deBugPrintJson(responseData)
           #endif
           UIApplication.shared.isNetworkActivityIndicatorVisible = false

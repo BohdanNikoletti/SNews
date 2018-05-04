@@ -28,14 +28,14 @@ final class NewsFeedViewController: UIViewController {
 
   override func didReceiveMemoryWarning() {
     super.didReceiveMemoryWarning()
-    // Dispose of any resources that can be recreated.
   }
   
   // MARK: - Private methods
   private func prepareTableView() {
     
     tableView.tableFooterView = UIView()
-    
+    tableView.contentInset = UIEdgeInsets(top: -36, left: 0, bottom: -24, right: 0)
+
     let dataSource = viewModel.dataSource
     
     viewModel.networkService?.content
@@ -87,16 +87,21 @@ extension NewsFeedViewController: UITableViewDelegate {
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
     return 80
   }
-  
+
   func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-    return UIView()
-  }
-  
-  func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-    return 0.01
+    let footerView = UIView()
+    let activityView = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+    activityView.hidesWhenStopped = true
+    activityView.startAnimating()
+    footerView.addSubview(activityView)
+    activityView.snp.makeConstraints { (make) -> Void in
+      make.centerX.equalTo(footerView.snp.centerX)
+      make.centerY.equalTo(footerView.snp.centerY)
+    }
+    return footerView
   }
   
   func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-    return 16
+    return 32
   }
 }

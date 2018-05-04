@@ -12,7 +12,9 @@ class IsLoadableTableViewCell: UITableViewCell {
   // MARK: - Properties
   var isLoading: Bool = false {
     didSet {
-      toggleSceleton()
+      if !isLoading {
+        self.hideSkeleton()
+      }
     }
   }
   

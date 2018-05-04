@@ -9,13 +9,14 @@
 import Foundation
 
 struct AppError: LocalizedError {
-  
+  // MARK: - Proeprties
   let title: String
   var errorDescription: String? { return _description }
   var failureReason: String? { return _description }
   
   private var _description: String
   
+  // MARK: - Initializers
   init(title: String? = nil, description: String) {
     self.title = title ?? "Error"
     self._description = description
@@ -25,7 +26,7 @@ struct AppError: LocalizedError {
     self.init(description: systemError.localizedDescription)
   }
 }
-
+// MARK: - AppError Decodable extension
 extension AppError: Decodable {
   
   private enum CodingKeys: String, CodingKey {

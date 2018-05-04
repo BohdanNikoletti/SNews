@@ -17,7 +17,7 @@ struct NewsFeedViewModel {
         guard let cell = tableView
           .dequeueReusableCell(withIdentifier: "NewsCell") as? NewsTableViewCell
           else {
-            fatalError("can not cast cell to NewsTableViewCell")
+            fatalError("Can not cast cell to NewsTableViewCell")
         }
         cell.isUserInteractionEnabled = !element.isTemplateModel
         cell.isLoading = element.isTemplateModel
