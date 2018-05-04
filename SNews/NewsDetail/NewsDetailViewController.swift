@@ -4,7 +4,7 @@
 //
 //  Created by Soft Project on 4/20/18.
 //  Copyright © 2018 Bohdan. All rights reserved.
-//
+//  swiftlint:disable implicitly_unwrapped_optional
 
 import UIKit
 import WebKit
