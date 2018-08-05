@@ -6,39 +6,27 @@
 //  Copyright © 2018 Bohdan. All rights reserved.
 //
 
-import RxDataSources
+import RxSwift
+import RxCocoa
+
 struct NewsFeedViewModel {
   
   // MARK: - Properties
-  var topHeadLinesResource = TopHeadLinesResource()
-  let networkService: NewsService?
-  let dataSource = RxTableViewSectionedReloadDataSource<NewsSection>(
-      configureCell: { (_, tableView, _, element) in
-        guard let cell = tableView
-          .dequeueReusableCell(withIdentifier: "NewsCell") as? NewsTableViewCell
-          else {
-            fatalError("Can not cast cell to NewsTableViewCell")
-        }
-        cell.isUserInteractionEnabled = !element.isTemplateModel
-        cell.isLoading = element.isTemplateModel
-        if element.isTemplateModel { return cell }
-        cell.title = element.title
-        cell.subTitle = element.description
-        cell.posterURL = element.imageLink
-        return cell
-    })
-  
+  var errors: Observable<AppError?> { return networkService.errorMessage.asObservable() }
+  var content: BehaviorRelay<[NewsSection]> { return networkService.content }
+  private let topHeadLinesResource: TopHeadLinesResource
+  private let networkService: NewsService
+
   // MARK: - Initializers
   init() {
-    topHeadLinesResource.methodPath.append("category=business")
-    networkService = NewsService(resource: topHeadLinesResource)
+    topHeadLinesResource = TopHeadLinesResource(category: .business)
+    self.networkService = NewsService(resource: topHeadLinesResource)
   }
   
   // MARK: - Methods
   func getNews() {
-    guard let service = self.networkService else { return }
-    if service.isLoading.value { return }
-    service.getNews()
+    if networkService.isLoading.value { return }
+    networkService.getNews()
   }
 
 }

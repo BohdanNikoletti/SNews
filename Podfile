@@ -15,7 +15,6 @@ def general_pods
   pod 'RxDataSources'
   pod 'NotificationBannerSwift'
   pod 'ReachabilitySwift'
-  pod 'SwiftLint'
   pod 'Kingfisher'
   pod 'FTLinearActivityIndicator'
   pod 'SkeletonView'

@@ -1,34 +1,34 @@
 PODS:
-  - Alamofire (4.7.2)
+  - Alamofire (4.7.3)
   - Differentiator (3.0.2)
   - FTLinearActivityIndicator (1.0.4)
-  - Kingfisher (4.7.0)
-  - MarqueeLabel/Swift (3.1.4)
-  - Nimble (7.1.1)
-  - NotificationBannerSwift (1.6.2):
+  - Kingfisher (4.8.1)
+  - MarqueeLabel/Swift (3.1.6)
+  - Nimble (7.1.3)
+  - NotificationBannerSwift (1.6.3):
     - MarqueeLabel/Swift
     - SnapKit (~> 4.0)
-  - Quick (1.3.0)
+  - Quick (1.3.1)
   - ReachabilitySwift (4.1.0)
   - RxAlamofire (4.2.0):
     - RxAlamofire/Core (= 4.2.0)
   - RxAlamofire/Core (4.2.0):
     - Alamofire (~> 4.5)
     - RxSwift (~> 4)
-  - RxBlocking (4.1.2):
+  - RxBlocking (4.2.0):
     - RxSwift (~> 4.0)
-  - RxCocoa (4.1.2):
+  - RxCocoa (4.2.0):
     - RxSwift (~> 4.0)
   - RxDataSources (3.0.2):
     - Differentiator (~> 3.0)
     - RxCocoa (~> 4.0)
     - RxSwift (~> 4.0)
-  - RxSwift (4.1.2)
-  - RxTest (4.1.2):
+  - RxSwift (4.2.0)
+  - RxTest (4.2.0):
     - RxSwift (~> 4.0)
-  - SkeletonView (1.2)
+  - SkeletonView (1.3)
   - SnapKit (4.0.0)
-  - SwiftLint (0.25.1)
+  - SwiftLint (0.27.0)
 
 DEPENDENCIES:
   - FTLinearActivityIndicator
@@ -47,7 +47,7 @@ DEPENDENCIES:
   - SwiftLint
 
 SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
+  https://github.com/cocoapods/specs.git:
     - Alamofire
     - Differentiator
     - FTLinearActivityIndicator
@@ -68,25 +68,25 @@ SPEC REPOS:
     - SwiftLint
 
 SPEC CHECKSUMS:
-  Alamofire: e4fa87002c137ba2d8d634d2c51fabcda0d5c223
+  Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
   Differentiator: a87be69eba49ec4ab460c7671143ee3a9eececfd
   FTLinearActivityIndicator: 0c4ff2067cd67d88fd932ec214da90083ea7148e
-  Kingfisher: da6b005aa96d37698e3e4f1ccfe96a5b9bbf27d6
-  MarqueeLabel: bf768455fe88d427f71476ebb23f9092b660f40b
-  Nimble: 391f07782af4b37914f9bd7b2ffbb952731b8202
-  NotificationBannerSwift: 4eceb2add9d5eaa0596c63d49690b4d6476e74ec
-  Quick: 03278013f71aa05fe9ecabc94fbcc6835f1ee76f
+  Kingfisher: 868c1149679a7ab6869be118faa9b5aed154aaf0
+  MarqueeLabel: 0c41f08ef5773e29c0f71064a8fa788a2fd8b365
+  Nimble: 2839b01d1b31f6a6a7777a221f0d91cf52e8e27b
+  NotificationBannerSwift: b231e4c3244848ef300e1c53ce027b9756b9b06f
+  Quick: d17304d58d0d169dd0bd1c6e5c28e3318de32a1a
   ReachabilitySwift: 6849231cd4e06559f3b9ef4a97a0a0f96d41e09f
   RxAlamofire: 87a9c588541210cc3e4a1f843ccc3ecf3eb98b31
-  RxBlocking: f6054985901412fc8c02daa84e92d4ba68c61389
-  RxCocoa: d88ba0f1f6abf040011a9eb4b539324fc426843a
+  RxBlocking: e339d8a6e752e25ade95ff858466c55436668f59
+  RxCocoa: 0b54909c902e1e581212a03e690bbd94032d8baa
   RxDataSources: cb7c31e652a87ebb919da45f716bbb87b3765f6b
-  RxSwift: e49536837d9901277638493ea537394d4b55f570
-  RxTest: e634f15fd2c2cd0e0120132ef7a4f7be69ad0393
-  SkeletonView: d68962d45d1af038f6a110d2274b183df8f82752
+  RxSwift: 99e10317ddfcc7fbe01356aafd118fde4a0be104
+  RxTest: 8da864c0ee47534f586ff18fb0c7e5b2f1fe5023
+  SkeletonView: 7694bfa90fae436487534900020ed39b8eabf94c
   SnapKit: a42d492c16e80209130a3379f73596c3454b7694
-  SwiftLint: ce933681be10c3266e82576dad676fa815a602e9
+  SwiftLint: 3207c1faa2240bf8973b191820a116113cd11073
 
 PODFILE CHECKSUM: 095468ae44cc43aa2cd9a85446feb68cff5bf2d4
 
-COCOAPODS: 1.5.0
+COCOAPODS: 1.5.3

@@ -14,7 +14,15 @@ struct TopHeadLinesResource: ApiResource {
     let articles: [Article]
   }
   
-  var methodPath = "top-headlines?"
+  enum Category: String {
+    case business
+  }
+  
+  let methodPath: String
+  
+  init(category: Category) {
+    methodPath = "top-headlines?category=\(category.rawValue)"
+  }
   
   func makeModel(data: Data) -> [Article]? {
     do {
