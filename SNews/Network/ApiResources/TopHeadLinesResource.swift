@@ -15,7 +15,7 @@ struct TopHeadLinesResource: ApiResource {
   }
   
   enum Category: String {
-    case business
+    case business, mock
   }
   
   let methodPath: String

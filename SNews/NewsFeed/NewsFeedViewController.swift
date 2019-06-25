@@ -21,7 +21,7 @@ final class NewsFeedViewController: UIViewController {
   private let footerHeight: CGFloat = 32
   private let newsDetailSegueID = "newsDetail"
   private let tableViewInsets = UIEdgeInsets(top: -36, left: 0, bottom: -24, right: 0)
-  private var viewModel = NewsFeedViewModel()
+  private let viewModel = NewsFeedViewModel()
   private let disposeBag = DisposeBag()
   private var selectedArticle: Article?
   private let dataSource = RxTableViewSectionedReloadDataSource<NewsSection>(
@@ -125,7 +125,7 @@ private extension UITableView {
 // MARK: - UITableViewDelegate extension
 extension NewsFeedViewController: UITableViewDelegate {
   
-  func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
+  func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
     return .none
   }
 
@@ -135,7 +135,7 @@ extension NewsFeedViewController: UITableViewDelegate {
 
   func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
     let footerView = UIView()
-    let activityView = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+    let activityView = UIActivityIndicatorView(style: .gray)
     activityView.hidesWhenStopped = true
     activityView.startAnimating()
     footerView.addSubview(activityView)

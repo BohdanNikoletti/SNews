@@ -25,8 +25,7 @@ final class AuthorizationSpec: QuickSpec {
 
       describe("Default settings") {
         it("with correct data") {
-          var topHeadLinesResource = TopHeadLinesResource()
-          topHeadLinesResource.methodPath.append("country=us&category=business")
+          let topHeadLinesResource = TopHeadLinesResource(category: TopHeadLinesResource.Category.business)
           networkService = NewsService(resource: topHeadLinesResource)
           do {
             let networkResponse = try networkService.request?.get()
@@ -41,8 +40,7 @@ final class AuthorizationSpec: QuickSpec {
           
         }
         it("with wrong data") {
-          var topHeadLinesResource = TopHeadLinesResource()
-          topHeadLinesResource.methodPath.append("countries=ff")
+          let topHeadLinesResource = TopHeadLinesResource(category: TopHeadLinesResource.Category.mock)
           networkService = NewsService(resource: topHeadLinesResource)
           do {
             let networkResponse = try networkService.request?.get()

@@ -32,13 +32,13 @@ extension AppError: Decodable {
   
   private enum CodingKeys: String, CodingKey {
     case title = "code"
-    case _description = "message"
+    case description = "message"
   }
   
   init(from decoder: Decoder) throws {
     let container = try decoder.container(keyedBy: CodingKeys.self)
     self.title = try container.decode(String.self, forKey: .title)
-    self._description = try container.decode(String.self, forKey: ._description)
+    self._description = try container.decode(String.self, forKey: .description)
   }
   
   static func parse( _ data: Data) -> AppError? {

@@ -35,7 +35,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
   }()
   
   // MARK: - App lifecycle
-  func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+  func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
     UIApplication.configureLinearNetworkActivityIndicatorIfNeeded()
     settingUpDebugLogForRX()
     reachabilityhandler()
@@ -52,7 +52,7 @@ private extension AppDelegate {
   private func settingUpDebugLogForRX() {
     #if DEBUG
     _ = Observable<Int>
-      .interval(1, scheduler: MainScheduler.instance)
+      .interval(DispatchTimeInterval.seconds(1), scheduler: MainScheduler.instance)
       .subscribe { _ in
         print("RxSwift Resource count: \(RxSwift.Resources.total).")
     }

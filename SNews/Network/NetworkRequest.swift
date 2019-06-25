@@ -19,7 +19,6 @@ extension NetworkRequest {
     do {
       let jsonData = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
       print(jsonData ?? "JSON data is Empty")
-      
     } catch {
       print(error.localizedDescription)
     }
